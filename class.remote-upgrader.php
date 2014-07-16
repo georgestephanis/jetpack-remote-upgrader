@@ -12,6 +12,8 @@ class Jetpack_Remote_Upgrader_Skin extends Automatic_Upgrader_Skin {
 
 class Jetpack_Remote_Upgrader {
 
+	var $messages;
+
 	/**
 	 * Upgrade Core
 	 */
@@ -102,6 +104,29 @@ class Jetpack_Remote_Upgrader {
 		$args = wp_parse_args( $args, $defaults );
 
 		return true;
+	}
+
+	/**
+	 * Clears all stored messages.
+	 */
+	public function clear_messages() {
+		$this->messages = array();
+		return $this;
+	}
+
+	/**
+	 * Adds a new message to the internal log.
+	 */
+	public function add_message( $message ) {
+		$this->messages[] = $message;
+		return $this;
+	}
+
+	/**
+	 * Get the internal message log.
+	 */
+	public function get_messages() {
+		return $this->messages;
 	}
 
 }
