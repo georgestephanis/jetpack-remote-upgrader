@@ -1,5 +1,15 @@
 <?php
 
+require_once( ABSPATH . 'wp-admin/includes/class-wp-upgrader.php' );
+
+/**
+ * Extending Automatic_Upgrader_Skin instead of using it directly, so that
+ * we can more easily modify/override things later on if needed.
+ */
+class Jetpack_Remote_Upgrader_Skin extends Automatic_Upgrader_Skin {
+	
+}
+
 class Jetpack_Remote_Upgrader {
 
 	/**
