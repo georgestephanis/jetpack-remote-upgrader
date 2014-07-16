@@ -129,4 +129,29 @@ class Jetpack_Remote_Upgrader {
 		return $this->messages;
 	}
 
+	/**
+	 * When upgrading manually, we don't care about VCS in parent
+	 * directories, as the user explicitly said to upgrade.
+	 */
+	public static function is_vcs_checkout( $path ) {
+		$vcs_dirs = array(
+			'.svn',
+			'.git',
+			'.hg',
+			'.bzr',
+		);
+
+		if ( @is_file( $path ) ) {
+			$path = dirname( $path );
+		}
+
+		foreach ( $vcs_dirs as $vcs_dir ) {
+			if ( @is_dir( rtrim( $path, '\\/' ) . "/$vcs_dir" ) ) {
+				return $vcs_dir;
+			}
+		}
+
+		return false;
+	}
+
 }
