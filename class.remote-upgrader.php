@@ -16,6 +16,11 @@ class Jetpack_Remote_Upgrader {
 	 * Upgrade Core
 	 */
 	public function upgrade_core( $args = array() ) {
+		$defaults = array(
+			'version' => null,
+		);
+		$args = wp_parse_args( $args, $defaults );
+
 		return true;
 	}
 
@@ -23,6 +28,13 @@ class Jetpack_Remote_Upgrader {
 	 * Install a Plugin
 	 */
 	public function install_plugin( $args = array() ) {
+		$defaults = array(
+			'slug'         => null,
+			'version'      => null,
+			'download_url' => null,
+		);
+		$args = wp_parse_args( $args, $defaults );
+
 		return true;
 	}
 
@@ -30,6 +42,13 @@ class Jetpack_Remote_Upgrader {
 	 * Upgrade a Plugin
 	 */
 	public function upgrade_plugin( $args = array() ) {
+		$defaults = array(
+			'slug'         => null,
+			'version'      => null,
+			'download_url' => null,
+		);
+		$args = wp_parse_args( $args, $defaults );
+
 		return true;
 	}
 
@@ -37,6 +56,11 @@ class Jetpack_Remote_Upgrader {
 	 * Uninstall a Plugin
 	 */
 	public function uninstall_plugin( $args = array() ) {
+		$defaults = array(
+			'slug'    => null,
+		);
+		$args = wp_parse_args( $args, $defaults );
+
 		return true;
 	}
 
@@ -44,6 +68,13 @@ class Jetpack_Remote_Upgrader {
 	 * Install a Theme
 	 */
 	public function install_theme( $args = array() ) {
+		$defaults = array(
+			'slug'         => null,
+			'version'      => null,
+			'download_url' => null,
+		);
+		$args = wp_parse_args( $args, $defaults );
+
 		return true;
 	}
 
@@ -51,6 +82,13 @@ class Jetpack_Remote_Upgrader {
 	 * Upgrade a Theme
 	 */
 	public function upgrade_theme( $args = array() ) {
+		$defaults = array(
+			'slug'         => null,
+			'version'      => null,
+			'download_url' => null,
+		);
+		$args = wp_parse_args( $args, $defaults );
+
 		return true;
 	}
 
@@ -58,6 +96,11 @@ class Jetpack_Remote_Upgrader {
 	 * Uninstall a Theme
 	 */
 	public function uninstall_theme( $args = array() ) {
+		$defaults = array(
+			'slug'    => null,
+		);
+		$args = wp_parse_args( $args, $defaults );
+
 		return true;
 	}
 
