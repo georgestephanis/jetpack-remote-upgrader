@@ -130,6 +130,34 @@ class Jetpack_Remote_Upgrader {
 	}
 
 	/**
+	 * Whether the Jetpack Upgrader is disabled.
+	 *
+	 * @param $path string The directory or file
+	 * @return boolean
+	 */
+	public static function can_install_or_upgrade( $path ) {
+		$can = true;
+
+		if ( defined( 'DISALLOW_FILE_MODS' ) && DISALLOW_FILE_MODS ) {
+			$this->add_message( __( 'DISALLOW_FILE_MODS is set, so we cannot modify the filesystem.' ) );
+			$can = false;
+		}
+
+		if ( $vcs = self::is_vcs_checkout( $path ) ) {
+			$this->add_message( sprintf( __( '%1$s is under %2$s version control.' ), $path, $vcs ) );
+			$can = false;
+		}
+
+		$skin = new Jetpack_Remote_Upgrader_Skin( array( 'context' => $path ) );
+		if ( ! $skin->request_filesystem_credentials() ) {
+			$this->add_message( sprintf( __( '`%1$s` returned no credentials for `%2$s`' ), 'request_filesystem_credentials()', $path ) );
+			$can = false;
+		}
+
+		return $can;
+	}
+
+	/**
 	 * When upgrading manually, we don't care about VCS in parent
 	 * directories, as the user explicitly said to upgrade.
 	 */
