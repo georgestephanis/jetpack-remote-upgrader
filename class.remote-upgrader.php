@@ -23,6 +23,8 @@ class Jetpack_Remote_Upgrader {
 			'locale'  => get_locale(),
 		);
 		$args = wp_parse_args( $args, $defaults );
+		$this->add_message( __FUNCTION__ );
+		$this->add_message( '$args = ' . json_encode( $args ) );
 
 		return true;
 	}
@@ -37,6 +39,8 @@ class Jetpack_Remote_Upgrader {
 			'download_url' => null,
 		);
 		$args = wp_parse_args( $args, $defaults );
+		$this->add_message( __FUNCTION__ );
+		$this->add_message( '$args = ' . json_encode( $args ) );
 
 		return true;
 	}
@@ -51,6 +55,8 @@ class Jetpack_Remote_Upgrader {
 			'download_url' => null,
 		);
 		$args = wp_parse_args( $args, $defaults );
+		$this->add_message( __FUNCTION__ );
+		$this->add_message( '$args = ' . json_encode( $args ) );
 
 		return true;
 	}
@@ -63,6 +69,8 @@ class Jetpack_Remote_Upgrader {
 			'slug'    => null,
 		);
 		$args = wp_parse_args( $args, $defaults );
+		$this->add_message( __FUNCTION__ );
+		$this->add_message( '$args = ' . json_encode( $args ) );
 
 		return true;
 	}
@@ -77,6 +85,8 @@ class Jetpack_Remote_Upgrader {
 			'download_url' => null,
 		);
 		$args = wp_parse_args( $args, $defaults );
+		$this->add_message( __FUNCTION__ );
+		$this->add_message( '$args = ' . json_encode( $args ) );
 
 		return true;
 	}
@@ -91,6 +101,8 @@ class Jetpack_Remote_Upgrader {
 			'download_url' => null,
 		);
 		$args = wp_parse_args( $args, $defaults );
+		$this->add_message( __FUNCTION__ );
+		$this->add_message( '$args = ' . json_encode( $args ) );
 
 		return true;
 	}
@@ -103,6 +115,8 @@ class Jetpack_Remote_Upgrader {
 			'slug'    => null,
 		);
 		$args = wp_parse_args( $args, $defaults );
+		$this->add_message( __FUNCTION__ );
+		$this->add_message( '$args = ' . json_encode( $args ) );
 
 		return true;
 	}
