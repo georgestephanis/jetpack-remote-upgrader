@@ -26,6 +26,34 @@ class Jetpack_Remote_Upgrader {
 		$this->add_message( __FUNCTION__ );
 		$this->add_message( '$args = ' . json_encode( $args ) );
 
+		require_once( ABSPATH . 'wp-admin/includes/update.php' );
+		$update = find_core_update( $args['version'], $args['locale'] );
+
+		if ( $update ) {
+			$target_dir = ABSPATH;
+
+			if ( ! $this->can_install_or_upgrade( $target_dir ) ) {
+				$this->add_message( __( 'Can\'t upgrade. See log for why.' ) );
+				return false;
+			}
+
+			$skin     = new Jetpack_Remote_Upgrader_Skin();
+			$upgrader = new Core_Upgrader( $skin );
+			$result   = $upgrader->upgrade( $update );
+
+			if ( is_wp_error( $result ) ) {
+				if ( $errors = $result->get_error_messages() ) {
+					foreach ( $errors as $error_message ) {
+						$this->add_message( $error_message );
+					}
+				}
+				return false;
+			}
+		} else {
+			$this->add_message( sprintf( __( '`%s` did not find an update for core.' ), "find_core_update( '{$args['version']}', '{$args['locale']}' )" ) );
+			return false;
+		}
+
 		return true;
 	}
 
