@@ -20,6 +20,7 @@ class Jetpack_Remote_Upgrader {
 	public function upgrade_core( $args = array() ) {
 		$defaults = array(
 			'version' => null,
+			'locale'  => get_locale(),
 		);
 		$args = wp_parse_args( $args, $defaults );
 
